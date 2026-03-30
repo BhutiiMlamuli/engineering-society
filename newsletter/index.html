@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNESWA Engineering Society Newsletter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2vw;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            background-image: url('images/header_background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: clamp(20px, 5vw, 40px) 2vw;
+            margin-bottom: 3vw;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 64, 0.5);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(10px, 2vw, 20px);
+           
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 3;
+            margin: 0 clamp(10px, 2vw, 20px);
+            padding: 0;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .logo {
+            width: clamp(50px, 8vw, 100px);
+            height: auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .logo-right {
+            display: block;
+        }
+
+        #articles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3vw;
+            flex-grow: 1;
+        }
+
+        .article-preview {
+            background-color: white;
+            border-radius: 8px;
+            padding: clamp(10px, 2vw, 20px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .article-title {
+            position: relative;
+            display: inline-block;
+            padding: clamp(5px, 1.5vw, 10px) clamp(8px, 2vw, 15px);
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-top: 0;
+            margin-bottom: clamp(8px, 2vw, 15px);
+            color: #004080;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .article-title::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+        }
+
+        .article-title span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-flag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: clamp(10px, 1.5vw, 12px);
+            font-weight: bold;
+        }
+
+        .breaking { background-color: #ff4444; }
+        .trending { background-color: #00cc00; }
+
+        .preview-image {
+            height: clamp(150px, 25vw, 200px);
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: clamp(8px, 2vw, 15px);
+        }
+
+        .read-more {
+            color: #004080;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        footer {
+            text-align: center;
+            padding: clamp(10px, 2vw, 20px);
+            background-color: #004080;
+            color: white;
+            margin-top: 3vw;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            margin-top: clamp(5px, 1vw, 10px);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: clamp(20px, 3vw, 30px);
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 3vw;
+            }
+
+            .header-content {
+                padding: 3vw;
+                max-width: 95%;
+                flex-direction: column;
+            }
+
+            .header h1 {
+                margin: clamp(5px, 1vw, 10px) 0;
+            }
+
+            .logo {
+                margin: clamp(5px, 1vw, 10px) 0;
+            }
+
+            .logo-right {
+                display: none;
+            }
+
+            #articles-container {
+                grid-template-columns: 1fr;
+                gap: 2vw;
+            }
+
+            .status-flag {
+                top: 5px;
+                right: 5px;
+                padding: 3px 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 3vw;
+            }
+
+            .header h1 {
+                line-height: 1.2;
+            }
+
+            .article-preview {
+                padding: 3vw;
+            }
+
+            .article-title {
+                width: 100%;
+                text-align: center;
+            }
+
+            .preview-image {
+                height: 30vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="images/ues_logo.png" alt="UES Logo" class="logo">
+            <h1>Uneswa Engineering Society Newsletter</h1>
+            <img src="images/uneswa_logo.png" alt="UNESWA Logo" class="logo logo-right">
+        </div>
+    </div>
+
+    <div id="articles-container">
+        <!-- Article previews will be loaded here -->
+    </div>
+
+    <footer>
+        <p>© 2025 UNESWA Engineering Society</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61551477411980"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/101214228/admin/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BTy6Oa1ltTYitxgdFUGuNSQ%3D%3D"><i class="fa fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        const articles = [
+            {
+                title: "Renewable Energy Innovations",
+                preview: "Discover the latest breakthroughs in solar technology...",
+                image: "images/preview_article1.jpg",
+                titleBackground: "images/title_article1.png",
+                status: "breaking",
+                link: "articles/article1.html"
+            },
+            {
+                title: "AI in Modern Engineering",
+                preview: "Exploring the impact of artificial intelligence...",
+                image: "images/preview_article2.jpg",
+                titleBackground: "images/title_article2.png",
+                status: "trending",
+                link: "articles/article2.html"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPreviews();
+        });
+
+        function renderPreviews() {
+            const container = document.getElementById('articles-container');
+            container.innerHTML = articles.map(article => `
+                <div class="article-preview">
+                    <h2 class="article-title" style="background-image: url('${article.titleBackground}')">
+                        <span>${article.title}</span>
+                    </h2>
+                    ${article.status ? `<span class="status-flag ${article.status}">${article.status.toUpperCase()}</span>` : ''}
+                    <div class="preview-image" style="background-image: url('${article.image}')"></div>
+                    <p>${article.preview} <a href="${article.link}" class="read-more">Read More</a></p>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

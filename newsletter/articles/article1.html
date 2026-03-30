@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewable Energy Innovations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2vw;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            background-image: url('../images/header_background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: clamp(20px, 5vw, 40px) 2vw;
+            margin-bottom: 3vw;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 64, 0.5);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(10px, 2vw, 20px);
+            
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        .header h1 {
+            position: relative;
+            z-index: 3;
+            margin: 0 clamp(10px, 2vw, 20px);
+            padding: 0;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .logo {
+            width: clamp(50px, 8vw, 100px);
+            height: auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .logo-right {
+            display: block;
+        }
+
+        .article {
+            background-color: white;
+            border-radius: 8px;
+            padding: clamp(10px, 2vw, 20px);
+            margin: 0 auto;
+            max-width: 800px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex-grow: 1;
+        }
+
+        .article h1 {
+            color: #004080;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 0 0 clamp(10px, 2vw, 20px);
+            position: relative;
+            display: inline-block;
+        }
+
+        .status-flag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: clamp(10px, 1.5vw, 12px);
+            font-weight: bold;
+            background-color: #ff4444;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .preview-image {
+            height: clamp(200px, 30vw, 300px);
+            background-image: url('../images/preview_article1.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: clamp(10px, 2vw, 15px);
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin: 0 0 clamp(10px, 2vw, 15px);
+        }
+
+        .comments-section {
+            margin-top: clamp(15px, 3vw, 20px);
+            border-top: 1px solid #ddd;
+            padding-top: clamp(10px, 2vw, 15px);
+        }
+
+        .comments-section h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin: 0 0 clamp(10px, 2vw, 15px);
+        }
+
+        .comment-form {
+            margin-bottom: clamp(10px, 2vw, 15px);
+            display: flex;
+            gap: 1vw;
+            flex-wrap: wrap;
+        }
+
+        .comment-input {
+            width: clamp(200px, 60%, 400px);
+            padding: clamp(6px, 1vw, 8px);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .comment-form button {
+            padding: clamp(6px, 1vw, 8px) clamp(10px, 2vw, 16px);
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .comment-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment-item {
+            background-color: #f8f8f8;
+            padding: clamp(8px, 1.5vw, 10px);
+            margin-bottom: clamp(6px, 1vw, 8px);
+            border-radius: 4px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        footer {
+            text-align: center;
+            padding: clamp(10px, 2vw, 20px);
+            background-color: #004080;
+            color: white;
+            margin-top: 3vw;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            margin-top: clamp(5px, 1vw, 10px);
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: clamp(20px, 3vw, 30px);
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 3vw;
+            }
+
+            .header-content {
+                padding: 3vw;
+                max-width: 95%;
+                flex-direction: column;
+            }
+
+            .header h1 {
+                margin: clamp(5px, 1vw, 10px) 0;
+            }
+
+            .logo {
+                margin: clamp(5px, 1vw, 10px) 0;
+            }
+
+            .logo-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .comment-form {
+                flex-direction: column;
+            }
+            .comment-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="../images/ues_logo.png" alt="UES Logo" class="logo">
+            <h1>UNESWA Engineering Society Newsletter</h1>
+            <img src="../images/uneswa_logo.png" alt="UNESWA Logo" class="logo logo-right">
+        </div>
+    </div>
+
+    <div class="article">
+        <h1>Renewable Energy Innovations <span class="status-flag">BREAKING</span></h1>
+        <div class="preview-image"></div>
+        <p>Solar technology has seen remarkable advancements in recent years, with new materials and designs pushing efficiency beyond traditional limits.</p>
+        <p>Researchers at UNESWA have developed a new type of solar panel that increases energy conversion rates by 25%. This breakthrough utilizes nanotechnology to capture more sunlight and convert it into usable electricity. The implications for renewable energy adoption in developing countries are significant, potentially reducing costs and increasing accessibility.</p>
+        <p>Additionally, wind energy systems have been optimized with AI-driven turbine adjustments, making them more efficient in varying weather conditions.</p>
+
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <form class="comment-form" onsubmit="addComment(event)">
+                <input type="text" class="comment-input" placeholder="Add a comment..." required>
+                <button type="submit">Post</button>
+            </form>
+            <ul class="comment-list" id="comments-list">
+                <li class="comment-item">Great advancement for sustainable energy!</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 UNESWA Engineering Society</p>
+        <div class="social-icons">
+            <a href="https://facebook.com"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com"><i class="fa fa-instagram"></i></a>
+            <a href="https://linkedin.com"><i class="fa fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        let comments = ["Great advancement for sustainable energy!"];
+
+        function addComment(event) {
+            event.preventDefault();
+            const commentInput = event.target.querySelector('.comment-input');
+            const commentText = commentInput.value.trim();
+            
+            if (commentText) {
+                comments.push(commentText);
+                renderComments();
+                commentInput.value = '';
+            }
+        }
+
+        function renderComments() {
+            const commentList = document.getElementById('comments-list');
+            commentList.innerHTML = comments.map(comment => `
+                <li class="comment-item">${comment}</li>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Modern Engineering</title>
+    <style>
+        /* Same styles as article1.html */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2vw;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .article {
+            background-color: white;
+            border-radius: 8px;
+            padding: clamp(10px, 2vw, 20px);
+            margin: 0 auto;
+            max-width: 800px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #004080;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 0 0 clamp(10px, 2vw, 20px);
+            position: relative;
+            display: inline-block;
+        }
+
+        .status-flag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: clamp(10px, 1.5vw, 12px);
+            font-weight: bold;
+            background-color: #00cc00;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .preview-image {
+            height: clamp(200px, 30vw, 300px);
+            background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4686e9755?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-bottom: clamp(10px, 2vw, 15px);
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin: 0 0 clamp(10px, 2vw, 15px);
+        }
+
+        .comments-section {
+            margin-top: clamp(15px, 3vw, 20px);
+            border-top: 1px solid #ddd;
+            padding-top: clamp(10px, 2vw, 15px);
+        }
+
+        .comments-section h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin: 0 0 clamp(10px, 2vw, 15px);
+        }
+
+        .comment-form {
+            margin-bottom: clamp(10px, 2vw, 15px);
+            display: flex;
+            gap: 1vw;
+            flex-wrap: wrap;
+        }
+
+        .comment-input {
+            width: clamp(200px, 60%, 400px);
+            padding: clamp(6px, 1vw, 8px);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .comment-form button {
+            padding: clamp(6px, 1vw, 8px) clamp(10px, 2vw, 16px);
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .comment-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment-item {
+            background-color: #f8f8f8;
+            padding: clamp(8px, 1.5vw, 10px);
+            margin-bottom: clamp(6px, 1vw, 8px);
+            border-radius: 4px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        @media (max-width: 480px) {
+            .comment-form {
+                flex-direction: column;
+            }
+            .comment-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="article">
+        <h1>AI in Modern Engineering <span class="status-flag">TRENDING</span></h1>
+        <div class="preview-image"></div>
+        <p>Artificial Intelligence is revolutionizing engineering practices across multiple disciplines, from structural design to process optimization.</p>
+        <p>At UNESWA, engineers are using AI to predict structural failures before they occur, analyzing data from sensors embedded in buildings and bridges. This predictive maintenance approach has reduced costs by 30% in pilot projects and increased safety standards.</p>
+        <p>Furthermore, AI-driven robotics are being implemented in manufacturing, allowing for precision engineering that surpasses human capabilities in repetitive tasks.</p>
+
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <form class="comment-form" onsubmit="addComment(event)">
+                <input type="text" class="comment-input" placeholder="Add a comment..." required>
+                <button type="submit">Post</button>
+            </form>
+            <ul class="comment-list" id="comments-list">
+                <li class="comment-item">AI is the future of engineering!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let comments = ["AI is the future of engineering!"];
+
+        function addComment(event) {
+            event.preventDefault();
+            const commentInput = event.target.querySelector('.comment-input');
+            const commentText = commentInput.value.trim();
+            
+            if (commentText) {
+                comments.push(commentText);
+                renderComments();
+                commentInput.value = '';
+            }
+        }
+
+        function renderComments() {
+            const commentList = document.getElementById('comments-list');
+            commentList.innerHTML = comments.map(comment => `
+                <li class="comment-item">${comment}</li>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>UNESWA Engineering Society</title>
+  <link rel="stylesheet" href="demoocss.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <section class="header">
+    <nav>
+      <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-times" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="newsletter/index.html">NEWSLETTER</a></li>
+          <li><a href="course.html">DOWNLOADS</a></li>
+          <li><a href="https://learn.uneswa.ac.sz/login/index.php">MOODLE</a></li>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+      <h1>UNESWA Engineering Society</h1>
+      <p>Welcome to UNESWA ENGINEERING SOCIETY, the premier engineering society for students in the University of Eswatini. We are a vibrant community of aspiring engineers dedicated to fostering innovation, knowledge sharing and professional development.</p>
+      <a href="about.html" class="hero-btn">Discover More</a>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="facilities">
+    <h1>Our Activities</h1>
+    <p>Field trips, seminars, outreach programs, and team building – we do it all.</p>
+    <div class="row">
+      <div class="facilities-col">
+        <img src="images/field%20trips.jpeg" alt="Field Trips">
+        <h3>Field Trips</h3>
+        <p>Visit industries and labs to see real‑world engineering.</p>
+      </div>
+      <div class="facilities-col">
+        <img src="images/seminers.jpeg" alt="Seminars">
+        <h3>Seminars</h3>
+        <p>Learn from experts and network with professionals.</p>
+      </div>
+      <div class="facilities-col">
+        <img src="images/projects.jpeg" alt="Projects">
+        <h3>Projects</h3>
+        <p>Hands‑on projects to apply theoretical knowledge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h1>What Our Members Say</h1>
+    <div class="row">
+      <div class="testimonial-col">
+        <img src="images/user.png" alt="User">
+        <div>
+          <p>Being part of this society boosted my confidence and network.</p>
+          <h3>Andile S.</h3>
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+        </div>
+      </div>
+      <div class="testimonial-col">
+        <img src="images/user.png" alt="User">
+        <div>
+          <p>The study materials and mentorship helped me ace my exams.</p>
+          <h3>Nhlanganiso N.</h3>
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Signup (frontend + backend) -->
+  <section class="cta">
+    <h1>Subscribe to Our Newsletter</h1>
+    <form id="newsletterForm" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+      <input type="email" id="newsEmail" placeholder="Your email address" required style="padding: 12px 20px; border-radius: 30px; border: none; width: 250px;">
+      <button type="submit" class="hero-btn">Subscribe</button>
+    </form>
+    <p id="newsMessage" style="color: white; margin-top: 15px;"></p>
+  </section>
+
+  <footer class="footer">
+    <h4>About Us</h4>
+    <p>Equipping students with engineering information to cultivate skills and opportunities.</p>
+    <div class="icons">
+      <a href="https://www.facebook.com/profile.php?id=61551477411980"><i class="fa fa-facebook"></i></a>
+      <a href="https://api.whatsapp.com/send?phone=26876928350"><i class="fa fa-whatsapp"></i></a>
+      <a href="https://instagram.com/uneswa.engineering.society"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/uneswa-engineering-society"><i class="fa fa-linkedin"></i></a>
+      <p>Made with <i class="fa fa-heart-o"></i> by <a href="https://api.whatsapp.com/send?phone=26876928350">M.</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() { navLinks.style.right = "0"; }
+    function hideMenu() { navLinks.style.right = "-200px"; }
+
+    // Newsletter subscription (AJAX)
+    document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsEmail').value;
+      const msgDiv = document.getElementById('newsMessage');
+      try {
+        const res = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          msgDiv.style.color = '#a5d6a5';
+          msgDiv.innerText = data.message;
+          document.getElementById('newsEmail').value = '';
+        } else {
+          msgDiv.style.color = '#ffb3b3';
+          msgDiv.innerText = data.error;
+        }
+      } catch (err) {
+        msgDiv.innerText = 'Server error. Try again later.';
+      }
+    });
+  </script>
+</body>
+</html>

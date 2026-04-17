@@ -1,133 +1,225 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <title>UNESWA Engineering Society</title>
-  <link rel="stylesheet" href="demoocss.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta name="viewport" content="with=device-width, initial-scale=1.0">  
+<title>uneswa engineering society</title>
+<link rel="stylesheet" href="demoocss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <section class="header">
+    <section class="header">
+    
     <nav>
-      <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
-      <div class="nav-links" id="navLinks">
-        <i class="fa fa-times" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="newsletter/index.html">NEWSLETTER</a></li>
-          <li><a href="course.html">DOWNLOADS</a></li>
-          <li><a href="https://learn.uneswa.ac.sz/login/index.php">MOODLE</a></li>
-        </ul>
-      </div>
-      <i class="fa fa-bars" onclick="showMenu()"></i>
-    </nav>
-    <div class="text-box">
-      <h1>UNESWA Engineering Society</h1>
-      <p>Welcome to UNESWA ENGINEERING SOCIETY, the premier engineering society for students in the University of Eswatini. We are a vibrant community of aspiring engineers dedicated to fostering innovation, knowledge sharing and professional development.</p>
-      <a href="about.html" class="hero-btn">Discover More</a>
-    </div>
-  </section>
-
-  <!-- Activities Section -->
-  <section class="facilities">
-    <h1>Our Activities</h1>
-    <p>Field trips, seminars, outreach programs, and team building – we do it all.</p>
-    <div class="row">
-      <div class="facilities-col">
-        <img src="images/field%20trips.jpeg" alt="Field Trips">
-        <h3>Field Trips</h3>
-        <p>Visit industries and labs to see real‑world engineering.</p>
-      </div>
-      <div class="facilities-col">
-        <img src="images/seminers.jpeg" alt="Seminars">
-        <h3>Seminars</h3>
-        <p>Learn from experts and network with professionals.</p>
-      </div>
-      <div class="facilities-col">
-        <img src="images/projects.jpeg" alt="Projects">
-        <h3>Projects</h3>
-        <p>Hands‑on projects to apply theoretical knowledge.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h1>What Our Members Say</h1>
-    <div class="row">
-      <div class="testimonial-col">
-        <img src="images/user.png" alt="User">
-        <div>
-          <p>Being part of this society boosted my confidence and network.</p>
-          <h3>Andile S.</h3>
-          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+        <a href="index.html"><img src="images/logo.png"></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                   <li><a href="newsletter/index.html">NEWSLETTER</a></li>
+                <li><a href="course.html">DOWNLOADS</a></li>
+                <li><a href="https://learn.uneswa.ac.sz/login/index.php">MOODLE</a></li>
+            </ul>
         </div>
-      </div>
-      <div class="testimonial-col">
-        <img src="images/user.png" alt="User">
-        <div>
-          <p>The study materials and mentorship helped me ace my exams.</p>
-          <h3>Nhlanganiso N.</h3>
-          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        
+        <div class="text-box">
+            <h1>UNESWA Engineering Society</h1>
+            <p>Welcome to UNESWA ENGINEERING SOCIETY, the premier engineering society for
+students in the University of Eswatini. We are a vibrant community of aspiring engineers
+dedicated to fostering innovation, knowledge sharing and professional development. At
+UNESWA ENGINEERING SOCIETY, we strive to create a dynamic environment where
+students can connect, collaborate and grow academically, professionally and even socially.
+Our society brings together like minded individuals who share a passion for engineering and
+a drive to make positive impact.</p>
+            <a href="about.html" class="hero-btn">Visit Us to know more</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter Signup (frontend + backend) -->
-  <section class="cta">
-    <h1>Subscribe to Our Newsletter</h1>
-    <form id="newsletterForm" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-      <input type="email" id="newsEmail" placeholder="Your email address" required style="padding: 12px 20px; border-radius: 30px; border: none; width: 250px;">
-      <button type="submit" class="hero-btn">Subscribe</button>
-    </form>
-    <p id="newsMessage" style="color: white; margin-top: 15px;"></p>
-  </section>
-
-  <footer class="footer">
-    <h4>About Us</h4>
-    <p>Equipping students with engineering information to cultivate skills and opportunities.</p>
-    <div class="icons">
-      <a href="https://www.facebook.com/profile.php?id=61551477411980"><i class="fa fa-facebook"></i></a>
-      <a href="https://api.whatsapp.com/send?phone=26876928350"><i class="fa fa-whatsapp"></i></a>
-      <a href="https://instagram.com/uneswa.engineering.society"><i class="fa fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/uneswa-engineering-society"><i class="fa fa-linkedin"></i></a>
-      <p>Made with <i class="fa fa-heart-o"></i> by <a href="https://api.whatsapp.com/send?phone=26876928350">M.</a></p>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile menu toggle
+    
+    </section>
+    
+<!----------------course----------------
+    
+ <section class="course">
+    <h1>Our Main Activities</h1>
+     <pThe UNESWA ENGINEERING SOCIETY organizes a variety of engaging activities to enhance the educational experience of its members. Some  key activities that the society focuses on are field trips, seminars, outreaches etc. These activities serve specific purposes and offer numerous benefits to the members and the broader community.</p>
+     
+     <div class="row ">
+        <div class="course-col">
+            <h3>Seminars:</h3>
+            <p>
+Seminars organized bring together industry experts, professors, and professionals to share their expertise and insights. These seminars cover a wide range of topics, including emerging technologies, research advancements, and industry trends. The primary purpose of seminars is to expose students to the latest developments in the field of electrical engineering. Through these sessions, students gain valuable knowledge, learn about cutting-edge research, and understand the practical applications of electrical engineering concepts. Seminars also provide networking opportunities, allowing students to connect with professionals who can provide guidance, mentorship, and potential career opportunities. Moreover, seminars encourage critical thinking, inspire innovation, and broaden students' perspectives.
+            </p>
+         </div>
+         
+         <div class="course-col">
+            <h3>Field Trips:</h3>
+            <p>
+Field trips organized provide students with valuable opportunities to explore real-world applications of electrical engineering concepts. These trips often involve visits to industrial facilities, research laboratories, or engineering projects. The main purpose of field trips is to bridge the gap between theoretical knowledge gained in classrooms and practical implementation in the industry. By witnessing engineering principles in action, students gain a deeper understanding of how their studies are applicable in the professional world. Field trips also allow students to network with professionals and gain insights into potential career paths. Additionally, these experiences foster teamwork, critical thinking, and problem-solving abilities in a real-world context
+            </p>
+         </div>
+         
+         <div class="course-col">
+            <h3>Outreaches:</h3>
+            <p>
+Outreaches organized focus on giving back to the community and creating a positive impact. These activities involve collaborating with local schools, community centers, or non-profit organizations to organize workshops, demonstrations, or educational programs related to electrical engineering. The main purpose of outreaches is to inspire and educate younger students about the field of electrical engineering. By engaging in hands-on activities and interactive sessions, the society members aim to generate interest and passion for STEM subjects among young minds. Outreaches also provide an opportunity for society members to develop leadership and communication skills while making a difference in the community. Moreover, these activities enhance the society's reputation, strengthen community ties, and promote the image of electrical engineering as a socially responsible profession.
+            </p>
+         </div>
+     </div>
+    </section>
+    ----->
+    
+   <!------slider-------
+    <section class="slideheader">
+             <h1>Our Most recent Activities</h1>
+        <p>The online gallary of our recent activities</p>
+    </section>
+    
+    <section class="slider">
+        <div class="slider-col">
+            <span style="--i:1"><img src="images/1%20(1).jpg" alt=""></span>
+             <span style="--i:2"><img src="images/1%20(2).jpg" alt=""></span>
+            <span style="--i:3"><img src="images/1%20(3).jpg" alt=""></span>      <span style="--i:4"><img src="images/1%20(4).jpg" alt=""></span>
+             <span style="--i:5"><img src="images/1%20(5).jpg" alt=""></span> 
+        </div>
+    </section>
+    ------>
+    
+            
+    
+    <!-----------faciliteis---------------->
+    <section class="facilities">
+    <h1>ACTIVITIES</h1>
+        <p>Society activities are a vital component of student life, offering numerous benefits that contribute to personal, academic, and professional growth. By focusing on skill development, networking, inclusivity, and innovative engagement, societies can create a vibrant and supportive community for their members. Effective planning, execution, and member involvement are key to the success of these activities, ensuring they are meaningful and impactful for all participants..</p>
+        
+        <div class="row">
+        <div class="facilities-col">
+            <img src="images/field%20trips.jpeg">
+            <h3>Fieid Trips</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.</p>
+            </div>
+            
+            <div class="facilities-col">
+            <img src="images/seminers.jpeg">
+            <h3>Seminers</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.</p>
+            </div>
+            
+            <div class="facilities-col">
+            <img src="images/projects.jpeg">
+            <h3>Projects</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.
+                </p>
+            </div>
+            
+        </div><br>
+        <div class="row">
+        <div class="facilities-col">
+            <img src="images/masterclass.jpeg">
+            <h3>Masterclasses</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.</p>
+            </div>
+            
+            <div class="facilities-col">
+            <img src="images/outreach.jpeg">
+            <h3>Outreach Programs</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.</p>
+            </div>
+            
+            <div class="facilities-col">
+            <img src="images/team.jpeg">
+            <h3>Team Building</h3>
+            <p>• Its main purpose is to isolate one portion of the circuit from the other and is not intended to be opened while 
+current is flowing in the line.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-------testiminials---------->
+    
+    <section class="tesimonials">
+        <h1>What our students says</h1>
+        <p>Joining school society groups can be a highly rewarding experience, offering numerous benefits that extend beyond academics.</p>
+        
+        <div class="row">
+        <div class="tesimonial-col">
+            <img src="images/user.png">
+            <div>
+                <p>Being part of a group and contributing to its activities can boost your self-confidence and self-esteem.</p>
+                <h3>Andile S.</h3>
+                <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star-o"></i>
+            </div>
+            </div>
+            
+            <div class="tesimonial-col">
+            <img src="images/user.png">
+            <div>
+                <p>Members often share study materials, resources, and tips, which can be beneficial for your academic performance.</p>
+                <h3>Nhlanganiso N.</h3>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star"></i>
+                 <i class="fa fa-star-half-o"></i>
+            </div>
+            </div>
+        </div>
+        
+    </section>
+    
+    <!-------call to action---------->
+    
+    <section class="cta">
+    <h1>Follow us from anywhere in the world <br>with our online platfoms.</h1>
+        <a href="https://www.facebook.com/profile.php?id=61551477411980&mibextid=2JQ9oc" class="hero-btn">Follow Us</a>
+    </section>
+     <!-------footer---------->
+    
+    <section class="footer">
+    <h4>About us</h4>
+        <p>Equiping students with engineering information in order to form a basis for cultivation of relevant skills and spotting opportunities for growth.</p>
+        <!-------icons---------->
+        <div class="icons">
+            <a href="https://www.facebook.com/profile.php?id=61551477411980&mibextid=2JQ9oc"><i class="fa fa-facebook"></i></a>
+             <a href="https://api.whatsapp.com/send?phone=26876928350"><i class="fa fa-whatsapp"></i></a>
+             <a href="https://instagram.com/uneswa.engineering.society?igshid=OGQ5ZDc2ODk2ZA=="><i class="fa fa-instagram"></i></a>
+             <a href="https://www.linkedin.com/company/uneswa-engineering-society/"><i class="fa fa-linkedin"></i></a>
+           <p>Made with <i class="fa fa-heart-o"></i> by <a href="https://api.whatsapp.com/send?phone=26876928350">M.</a></p>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+<!-------javascript for toggle menu---------->
+<script>
     var navLinks = document.getElementById("navLinks");
-    function showMenu() { navLinks.style.right = "0"; }
-    function hideMenu() { navLinks.style.right = "-200px"; }
-
-    // Newsletter subscription (AJAX)
-    document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('newsEmail').value;
-      const msgDiv = document.getElementById('newsMessage');
-      try {
-        const res = await fetch('/api/newsletter', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
-        });
-        const data = await res.json();
-        if (res.ok) {
-          msgDiv.style.color = '#a5d6a5';
-          msgDiv.innerText = data.message;
-          document.getElementById('newsEmail').value = '';
-        } else {
-          msgDiv.style.color = '#ffb3b3';
-          msgDiv.innerText = data.error;
-        }
-      } catch (err) {
-        msgDiv.innerText = 'Server error. Try again later.';
-      }
-    });
-  </script>
+    function showMenu(){
+        navLinks.style.right = "0";
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px";
+    }
+    </script>
 </body>
+
 </html>

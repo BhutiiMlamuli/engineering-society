@@ -182,12 +182,18 @@ current is flowing in the line.
         
     </section>
     
-    <!-------call to action---------->
+    <!-------call to action (modified to include newsletter)---------->
     
     <section class="cta">
-    <h1>Follow us from anywhere in the world <br>with our online platfoms.</h1>
+        <h1>Follow us & Subscribe</h1>
+        <form id="newsletterForm" style="margin-bottom: 20px;">
+            <input type="email" id="newsEmail" placeholder="Your email address" required style="padding: 10px 20px; border-radius: 30px; border: none; width: 250px; margin-right: 10px;">
+            <button type="submit" class="hero-btn">Subscribe</button>
+        </form>
+        <p id="newsMessage" style="color: #fff;"></p>
         <a href="https://www.facebook.com/profile.php?id=61551477411980&mibextid=2JQ9oc" class="hero-btn">Follow Us</a>
     </section>
+
      <!-------footer---------->
     
     <section class="footer">
@@ -206,7 +212,7 @@ current is flowing in the line.
     <!-- Dark Mode Toggle Button -->
     <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
 
-<!-------javascript for toggle menu---------->
+<!-------javascript for toggle menu and backend---------->
 <script>
     var navLinks = document.getElementById("navLinks");
     function showMenu(){
@@ -226,6 +232,35 @@ current is flowing in the line.
         if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
         }
+    }
+
+    // Newsletter subscription
+    const newsForm = document.getElementById('newsletterForm');
+    if (newsForm) {
+        newsForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newsEmail').value;
+            const msg = document.getElementById('newsMessage');
+            try {
+                const res = await fetch('/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    msg.style.color = '#a5d6a5';
+                    msg.innerText = data.message;
+                    document.getElementById('newsEmail').value = '';
+                } else {
+                    msg.style.color = '#ffb3b3';
+                    msg.innerText = data.error;
+                }
+            } catch (err) {
+                msg.innerText = 'Server error. Try again.';
+            }
+            setTimeout(() => msg.innerText = '', 3000);
+        });
     }
 </script>
 </body>

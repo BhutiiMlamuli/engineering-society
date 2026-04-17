@@ -125,7 +125,7 @@ face of challenges or distractions.</p>
     <!-- Dark Mode Toggle Button -->
     <button class="dark-mode-toggle" id="darkModeToggle">🌙</button>
 
-<!-------javascript for toggle menu---------->
+<!-------javascript for toggle menu and backend---------->
 <script>
     var navLinks = document.getElementById("navLinks");
     function showMenu(){
@@ -146,6 +146,87 @@ face of challenges or distractions.</p>
             document.body.classList.add('dark-mode');
         }
     }
+
+    // --- Comment functionality (works with your existing form) ---
+    async function loadComments() {
+        try {
+            const res = await fetch('/api/comments');
+            const comments = await res.json();
+            // Create a container for comments if it doesn't exist
+            let container = document.getElementById('commentsList');
+            if (!container) {
+                const blogLeft = document.querySelector('.blog-left');
+                container = document.createElement('div');
+                container.id = 'commentsList';
+                container.innerHTML = '<h3>Recent Comments</h3><div id="commentsContainer"></div>';
+                blogLeft.appendChild(container);
+            }
+            const commentsContainer = document.getElementById('commentsContainer');
+            if (comments.length === 0) {
+                commentsContainer.innerHTML = '<p>No comments yet. Be the first!</p>';
+            } else {
+                commentsContainer.innerHTML = comments.map(c => `
+                    <div style="border-bottom:1px solid #eee; margin-bottom:15px; padding-bottom:10px;">
+                        <strong>${escapeHtml(c.name)}</strong>
+                        <small style="color:#888;">${new Date(c.created_at).toLocaleString()}</small>
+                        <p>${escapeHtml(c.message)}</p>
+                    </div>
+                `).join('');
+            }
+        } catch (err) {
+            console.error('Failed to load comments', err);
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Attach to the existing comment form
+    const commentForm = document.querySelector('.comment-form');
+    if (commentForm) {
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nameInput = commentForm.querySelector('input[placeholder="Enter Name"]');
+            const emailInput = commentForm.querySelector('input[placeholder="Enter Email"]');
+            const messageTextarea = commentForm.querySelector('textarea');
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageTextarea.value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill all fields');
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/comments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    alert('Comment posted!');
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    messageTextarea.value = '';
+                    loadComments();  // refresh the list
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (err) {
+                alert('Server error. Try again later.');
+            }
+        });
+    }
+
+    loadComments();
 </script>
 </body>
 
